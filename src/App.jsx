@@ -1,11 +1,15 @@
-import DriverVerification from "./components/DriverVerification";
+// import DriverVerification from "./components/userComponents/DriverVerification";
+
+import RideDetails from "./components/userComponents/RideDetails";
 
 
 
 function App() {
   return (
     <>
-      <DriverVerification />
+      {/* <DriverVerification /> */}
+
+      {/* <RideDetails/> */}
     </>
   );
 }
