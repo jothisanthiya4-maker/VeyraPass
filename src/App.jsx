@@ -1,5 +1,5 @@
-import DriverVerification from "./components/userComponents/DriverVerification";
-import LandingPage from "./components/LandingPage";
+import DriverVerification from "./pages/driverPages/DriverVerification";
+import LandingPage from "./pages/userPages/LandingPage";
 
 
 
@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <LandingPage />
-      <DriverVerification />
+      {/* <DriverVerification /> */}
 
     </>
   );
