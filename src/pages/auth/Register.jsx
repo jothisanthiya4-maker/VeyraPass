@@ -8,76 +8,14 @@ import {
   Mail,
   Phone,
   LockKeyhole,
-  Eye,
-  EyeOff,
   MapPin,
   ShieldCheck,
-  Check,
   UploadCloud,
   FileText,
-  Gauge,
   Users,
   Sparkles,
   CircleCheck,
 } from "lucide-react";
-
-const PasswordField = ({ label, placeholder }) => {
-  const [visible, setVisible] = useState(false);
-
-  return (
-    <div className="space-y-2">
-      <label className="text-sm font-semibold text-[#28332D]">
-        {label}
-      </label>
-      <div className="relative">
-        <LockKeyhole
-          size={18}
-          className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8FAF9A]"
-        />
-        <input
-          type={visible ? "text" : "password"}
-          placeholder={placeholder}
-          className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pl-11 pr-12 text-sm outline-none transition focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15"
-        />
-        <button
-          type="button"
-          onClick={() => setVisible(!visible)}
-          className="absolute right-4 top-1/2 -translate-y-1/2 text-[#788078] hover:text-[#28332D]"
-        >
-          {visible ? <EyeOff size={18} /> : <Eye size={18} />}
-        </button>
-      </div>
-    </div>
-  );
-};
-
-const InputField = ({
-  label,
-  placeholder,
-  icon: Icon,
-  type = "text",
-}) => (
-  <div className="space-y-2">
-    <label className="text-sm font-semibold text-[#28332D]">
-      {label}
-    </label>
-    <div className="relative">
-      {Icon && (
-        <Icon
-          size={18}
-          className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8FAF9A]"
-        />
-      )}
-      <input
-        type={type}
-        placeholder={placeholder}
-        className={`w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pr-4 text-sm outline-none transition placeholder:text-[#A4AAA4] focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15 ${
-          Icon ? "pl-11" : "pl-4"
-        }`}
-      />
-    </div>
-  </div>
-);
 
 const Register = () => {
   const [role, setRole] = useState("passenger");
@@ -102,6 +40,7 @@ const Register = () => {
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#8FAF9A] text-[#28332D]">
                 <CarFront size={27} />
               </div>
+
               <div>
                 <h1 className="text-2xl font-bold tracking-tight">
                   Share<span className="text-[#8FAF9A]">Auto</span>
@@ -115,6 +54,7 @@ const Register = () => {
 
           {/* Branding content */}
           <div className="relative z-10 my-12">
+
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#8FAF9A]/30 bg-[#8FAF9A]/10 px-4 py-2 text-xs font-medium text-[#C5D6C9]">
               <Sparkles size={14} />
               YOUR CITY, YOUR RIDE
@@ -143,6 +83,7 @@ const Register = () => {
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#8FAF9A]/20 text-[#C5D6C9]">
                   <MapPin size={22} />
                 </div>
+
                 <div>
                   <h3 className="text-sm font-semibold">
                     Smarter City Connections
@@ -157,6 +98,7 @@ const Register = () => {
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#8FAF9A]/20 text-[#C5D6C9]">
                   <ShieldCheck size={22} />
                 </div>
+
                 <div>
                   <h3 className="text-sm font-semibold">
                     Travel With Confidence
@@ -171,6 +113,7 @@ const Register = () => {
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#8FAF9A]/20 text-[#C5D6C9]">
                   <Users size={22} />
                 </div>
+
                 <div>
                   <h3 className="text-sm font-semibold">
                     Ride Together, Save More
@@ -197,6 +140,7 @@ const Register = () => {
 
           {/* Top navigation */}
           <header className="flex items-center justify-between border-b border-[#E5E8E1] bg-[#F6F5F0] px-6 py-5 sm:px-10">
+
             <a
               href="/"
               className="flex items-center gap-2 text-sm font-semibold text-[#28332D] transition hover:text-[#8FAF9A]"
@@ -209,6 +153,7 @@ const Register = () => {
               <ShieldCheck size={16} className="text-[#8FAF9A]" />
               Secure Registration
             </div>
+
           </header>
 
           {/* Form area */}
@@ -218,6 +163,7 @@ const Register = () => {
 
               {/* Heading */}
               <div className="mb-8">
+
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-[#E5EDE6] px-3 py-1.5 text-[11px] font-bold tracking-wider text-[#526C59]">
                   <Sparkles size={13} />
                   JOIN THE COMMUNITY
@@ -231,16 +177,19 @@ const Register = () => {
                   Start your journey with ShareAuto. Register
                   today and experience smarter city travel.
                 </p>
+
               </div>
 
               {/* Role Selection */}
               <div className="mb-7">
+
                 <label className="mb-3 block text-sm font-semibold text-[#28332D]">
                   I want to join as
                 </label>
 
                 <div className="grid grid-cols-2 gap-3">
 
+                  {/* Passenger */}
                   <button
                     type="button"
                     onClick={() => setRole("passenger")}
@@ -250,11 +199,14 @@ const Register = () => {
                         : "border-[#DCE3DC] bg-white hover:border-[#8FAF9A]"
                     }`}
                   >
-                    <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${
-                      role === "passenger"
-                        ? "bg-[#28332D] text-white"
-                        : "bg-[#F0F2ED] text-[#788078]"
-                    }`}>
+
+                    <div
+                      className={`flex h-10 w-10 items-center justify-center rounded-xl ${
+                        role === "passenger"
+                          ? "bg-[#28332D] text-white"
+                          : "bg-[#F0F2ED] text-[#788078]"
+                      }`}
+                    >
                       <UserRound size={21} />
                     </div>
 
@@ -273,8 +225,10 @@ const Register = () => {
                         className="absolute right-3 top-3 text-[#526C59]"
                       />
                     )}
+
                   </button>
 
+                  {/* Driver */}
                   <button
                     type="button"
                     onClick={() => setRole("driver")}
@@ -284,11 +238,14 @@ const Register = () => {
                         : "border-[#DCE3DC] bg-white hover:border-[#8FAF9A]"
                     }`}
                   >
-                    <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${
-                      role === "driver"
-                        ? "bg-[#28332D] text-white"
-                        : "bg-[#F0F2ED] text-[#788078]"
-                    }`}>
+
+                    <div
+                      className={`flex h-10 w-10 items-center justify-center rounded-xl ${
+                        role === "driver"
+                          ? "bg-[#28332D] text-white"
+                          : "bg-[#F0F2ED] text-[#788078]"
+                      }`}
+                    >
                       <CarFront size={22} />
                     </div>
 
@@ -307,6 +264,7 @@ const Register = () => {
                         className="absolute right-3 top-3 text-[#526C59]"
                       />
                     )}
+
                   </button>
 
                 </div>
@@ -315,40 +273,114 @@ const Register = () => {
               {/* Registration Form */}
               <form className="space-y-5">
 
-                {/* Common details */}
+                {/* Common Details */}
                 <div className="grid gap-5 sm:grid-cols-2">
 
-                  <InputField
-                    label="Full Name"
-                    placeholder="Enter your full name"
-                    icon={UserRound}
-                  />
+                  {/* Full Name */}
+                  <div className="space-y-2">
+                    <label className="text-sm font-semibold text-[#28332D]">
+                      Full Name
+                    </label>
 
-                  <InputField
-                    label="Mobile Number"
-                    placeholder="+91 00000 00000"
-                    icon={Phone}
-                  />
+                    <div className="relative">
+                      <UserRound
+                        size={18}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8FAF9A]"
+                      />
+
+                      <input
+                        type="text"
+                        placeholder="Enter your full name"
+                        className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pl-11 pr-4 text-sm outline-none transition placeholder:text-[#A4AAA4] focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Mobile Number */}
+                  <div className="space-y-2">
+                    <label className="text-sm font-semibold text-[#28332D]">
+                      Mobile Number
+                    </label>
+
+                    <div className="relative">
+                      <Phone
+                        size={18}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8FAF9A]"
+                      />
+
+                      <input
+                        type="tel"
+                        placeholder="+91 00000 00000"
+                        className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pl-11 pr-4 text-sm outline-none transition placeholder:text-[#A4AAA4] focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15"
+                      />
+                    </div>
+                  </div>
 
                 </div>
 
-                <InputField
-                  label="Email Address"
-                  placeholder="you@example.com"
-                  icon={Mail}
-                  type="email"
-                />
+                {/* Email Address */}
+                <div className="space-y-2">
+                  <label className="text-sm font-semibold text-[#28332D]">
+                    Email Address
+                  </label>
 
+                  <div className="relative">
+                    <Mail
+                      size={18}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8FAF9A]"
+                    />
+
+                    <input
+                      type="email"
+                      placeholder="you@example.com"
+                      className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pl-11 pr-4 text-sm outline-none transition placeholder:text-[#A4AAA4] focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15"
+                    />
+                  </div>
+                </div>
+
+                {/* Password Fields */}
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <PasswordField
-                    label="Password"
-                    placeholder="Create password"
-                  />
 
-                  <PasswordField
-                    label="Confirm Password"
-                    placeholder="Re-enter password"
-                  />
+                  {/* Password */}
+                  <div className="space-y-2">
+                    <label className="text-sm font-semibold text-[#28332D]">
+                      Password
+                    </label>
+
+                    <div className="relative">
+                      <LockKeyhole
+                        size={18}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8FAF9A]"
+                      />
+
+                      <input
+                        type="password"
+                        placeholder="Create password"
+                        className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pl-11 pr-4 text-sm outline-none transition placeholder:text-[#A4AAA4] focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Confirm Password */}
+                  <div className="space-y-2">
+                    <label className="text-sm font-semibold text-[#28332D]">
+                      Confirm Password
+                    </label>
+
+                    <div className="relative">
+                      <LockKeyhole
+                        size={18}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8FAF9A]"
+                      />
+
+                      <input
+                        type="password"
+                        placeholder="Re-enter password"
+                        className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pl-11 pr-4 text-sm outline-none transition placeholder:text-[#A4AAA4] focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15"
+                      />
+                    </div>
+                  </div>
+
                 </div>
 
                 {/* Driver-only details */}
@@ -359,67 +391,119 @@ const Register = () => {
                       <h3 className="font-serif text-xl font-bold text-[#28332D]">
                         Vehicle Information
                       </h3>
+
                       <p className="mt-1 text-xs text-[#788078]">
                         Provide your driving and vehicle details.
                       </p>
                     </div>
 
-                    <InputField
-                      label="Driving Licence Number"
-                      placeholder="Enter licence number"
-                      icon={FileText}
-                    />
+                    {/* Driving Licence Number */}
+                    <div className="space-y-2">
+                      <label className="text-sm font-semibold text-[#28332D]">
+                        Driving Licence Number
+                      </label>
 
-                    <InputField
-                      label="Vehicle Registration Number"
-                      placeholder="TN 00 AB 0000"
-                      icon={CarFront}
-                    />
+                      <div className="relative">
+                        <FileText
+                          size={18}
+                          className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8FAF9A]"
+                        />
 
+                        <input
+                          type="text"
+                          placeholder="Enter licence number"
+                          className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pl-11 pr-4 text-sm outline-none transition placeholder:text-[#A4AAA4] focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Vehicle Registration Number */}
+                    <div className="space-y-2">
+                      <label className="text-sm font-semibold text-[#28332D]">
+                        Vehicle Registration Number
+                      </label>
+
+                      <div className="relative">
+                        <CarFront
+                          size={18}
+                          className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8FAF9A]"
+                        />
+
+                        <input
+                          type="text"
+                          placeholder="TN 00 AB 0000"
+                          className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pl-11 pr-4 text-sm outline-none transition placeholder:text-[#A4AAA4] focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Vehicle Model and Type */}
                     <div className="grid gap-5 sm:grid-cols-2">
-                      <InputField
-                        label="Vehicle Model"
-                        placeholder="e.g. Bajaj RE"
-                        icon={CarFront}
-                      />
 
+                      {/* Vehicle Model */}
+                      <div className="space-y-2">
+                        <label className="text-sm font-semibold text-[#28332D]">
+                          Vehicle Model
+                        </label>
+
+                        <div className="relative">
+                          <CarFront
+                            size={18}
+                            className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8FAF9A]"
+                          />
+
+                          <input
+                            type="text"
+                            placeholder="e.g. Bajaj RE"
+                            className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pl-11 pr-4 text-sm outline-none transition placeholder:text-[#A4AAA4] focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Vehicle Type */}
                       <div className="space-y-2">
                         <label className="text-sm font-semibold text-[#28332D]">
                           Vehicle Type
                         </label>
+
                         <select className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] px-4 py-3.5 text-sm text-[#788078] outline-none focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15">
                           <option value="">Select vehicle</option>
-                          <option>Auto Rickshaw</option>
-                          <option>Electric Auto</option>
+                          <option value="auto">Auto Rickshaw</option>
+                          <option value="electric">Electric Auto</option>
                         </select>
                       </div>
+
                     </div>
 
+                    {/* Seating Capacity */}
                     <div className="space-y-2">
                       <label className="text-sm font-semibold text-[#28332D]">
                         Seating Capacity
                       </label>
+
                       <div className="relative">
                         <Users
                           size={18}
                           className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8FAF9A]"
                         />
-                        <select className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pl-11 pr-4 text-sm text-[#788078] outline-none focus:border-[#8FAF9A]">
+
+                        <select className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pl-11 pr-4 text-sm text-[#788078] outline-none focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15">
                           <option value="">Select capacity</option>
-                          <option>3 Seats</option>
-                          <option>4 Seats</option>
-                          <option>5 Seats</option>
+                          <option value="3">3 Seats</option>
+                          <option value="4">4 Seats</option>
+                          <option value="5">5 Seats</option>
                         </select>
                       </div>
                     </div>
 
-                    {/* Document upload */}
+                    {/* Document Upload */}
                     <div>
                       <label className="mb-2 block text-sm font-semibold text-[#28332D]">
                         Upload Documents
                       </label>
 
                       <label className="flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#B7CABB] bg-[#E5EDE6]/50 px-5 py-7 text-center transition hover:border-[#8FAF9A] hover:bg-[#E5EDE6]">
+
                         <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-[#526C59] shadow-sm">
                           <UploadCloud size={24} />
                         </div>
@@ -427,9 +511,11 @@ const Register = () => {
                         <p className="text-sm font-semibold text-[#28332D]">
                           Click to upload documents
                         </p>
+
                         <p className="mt-2 text-xs text-[#788078]">
                           Driving Licence and Vehicle RC
                         </p>
+
                         <p className="mt-1 text-[10px] text-[#9AA39A]">
                           PDF, JPG or PNG
                         </p>
@@ -440,36 +526,47 @@ const Register = () => {
                           multiple
                           className="hidden"
                         />
+
                       </label>
                     </div>
 
                   </div>
                 )}
 
-                {/* Terms */}
+                {/* Terms and Conditions */}
                 <label className="flex cursor-pointer items-start gap-3 pt-1">
+
                   <input
                     type="checkbox"
                     className="mt-1 h-4 w-4 accent-[#526C59]"
                   />
+
                   <span className="text-xs leading-6 text-[#788078]">
                     I agree to the{" "}
-                    <a href="#" className="font-semibold text-[#526C59] underline">
+                    <a
+                      href="#"
+                      className="font-semibold text-[#526C59] underline"
+                    >
                       Terms & Conditions
                     </a>{" "}
                     and{" "}
-                    <a href="#" className="font-semibold text-[#526C59] underline">
+                    <a
+                      href="#"
+                      className="font-semibold text-[#526C59] underline"
+                    >
                       Privacy Policy
                     </a>.
                   </span>
+
                 </label>
 
-                {/* Submit */}
+                {/* Submit Button */}
                 <button
                   type="button"
                   className="group flex w-full items-center justify-center gap-3 rounded-xl bg-[#28332D] py-4 text-sm font-bold tracking-wide text-white shadow-lg shadow-[#28332D]/15 transition duration-300 hover:-translate-y-0.5 hover:bg-[#3B5143] hover:shadow-xl"
                 >
                   Create Account
+
                   <ArrowRight
                     size={18}
                     className="transition-transform group-hover:translate-x-1"
@@ -481,6 +578,7 @@ const Register = () => {
               {/* Login */}
               <p className="mt-7 text-center text-sm text-[#788078]">
                 Already have an account?{" "}
+
                 <a
                   href="/login"
                   className="font-bold text-[#526C59] underline-offset-4 hover:underline"
