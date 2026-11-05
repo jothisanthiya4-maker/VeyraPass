@@ -6,7 +6,7 @@ import React, {
   useEffect
 } from "react";
 import { useNavigate, useLocation, useSearchParams, Link } from "react-router-dom";
-import { useBooking } from "../context/BookingContext";
+import { useBooking } from "../../components/context/BookingContext";
 
 const Dashboard = () => {
   // 1. React Router DOM Hooks (useNavigate, useLocation, useSearchParams)
