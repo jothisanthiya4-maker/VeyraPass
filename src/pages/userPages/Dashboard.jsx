@@ -1,3 +1,15 @@
+<<<<<<< HEAD:src/components/userComponents/Dashboard.jsx
+=======
+import React, {
+  useState,
+  useRef,
+  useCallback,
+  useMemo,
+  useEffect
+} from "react";
+import { useNavigate, useLocation, useSearchParams, Link } from "react-router-dom";
+import { useBooking } from "../../components/context/BookingContext";
+>>>>>>> origin/main:src/pages/userPages/Dashboard.jsx
 
 import { useState } from "react";
 import { NavLink } from "react-router-dom";

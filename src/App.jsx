@@ -3,7 +3,9 @@ import Register from "./pages/auth/Register";
 import DriverVerification from "./pages/driverPages/DriverVerification";
 import LandingPage from "./pages/userPages/LandingPage";
 import { Routes, Route } from "react-router-dom";
-import Dashboard from "./components/userComponents/Dashboard";
+
+import { BookingProvider } from "./components/context/BookingContext";
+import Dashboard from "./pages/userPages/Dashboard";
 
 
 
