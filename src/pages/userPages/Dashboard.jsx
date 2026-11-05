@@ -1,15 +1,5 @@
-import React, {
-  useState,
-  useRef,
-  useCallback,
-  useMemo,
-  useEffect
-} from "react";
-import { useNavigate, useLocation, useSearchParams, Link } from "react-router-dom";
-
-
-
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import {
   LayoutDashboard,
@@ -29,23 +19,14 @@ import {
   LogOut,
 } from "lucide-react";
 
-const menuItems = [
-  { name: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
-  { name: "Find Auto", path: "/find-auto", icon: Search },
-  { name: "Scheduled Booking", path: "/scheduled-booking", icon: CalendarDays },
-  { name: "Instant Booking", path: "/instant-booking", icon: Zap },
-  { name: "My Bookings", path: "/my-bookings", icon: ClipboardList },
-  { name: "Digital Pass", path: "/digital-pass", icon: CreditCard },
-  { name: "My Journey", path: "/my-journey", icon: Map },
-  { name: "Wallet", path: "/wallet", icon: Wallet },
-  { name: "Rewards", path: "/rewards", icon: Gift },
-  { name: "Safety Centre", path: "/safety-centre", icon: ShieldCheck },
-  { name: "Profile", path: "/profile", icon: User },
-  { name: "Settings", path: "/settings", icon: Settings },
-];
-
 export default function UserDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const activeUser = localStorage.getItem("shareAuto-actvieUser");
+  
+  if (!activeUser) {
+    alert('you are not a valid user')
+    return <Navigate to="/login" replace />;
+  }
 
   return (
     <div className="w-full min-h-screen bg-[#F7F8F5] lg:flex">
@@ -101,32 +82,43 @@ export default function UserDashboard() {
 
         {/* NAVIGATION */}
         <nav className="flex-1 px-3 py-6 space-y-1.5 overflow-y-auto">
-
-          {menuItems.map((item) => {
-            const Icon = item.icon;
-
-            return (
-              <NavLink
-                key={item.name}
-                to={item.path}
-                end={item.path === "/dashboard"}
-                onClick={() => setSidebarOpen(false)}
-                className={({ isActive }) =>
-                  `flex items-center gap-3 px-4 py-3 rounded-xl
-                  text-sm font-semibold transition-all duration-200
-                  ${
-                    isActive
-                      ? "bg-[#96B6A1] text-[#26372F]"
-                      : "text-gray-200 hover:bg-white/10 hover:text-white"
-                  }`
-                }
-              >
-                <Icon size={19} strokeWidth={1.8} />
-                <span>{item.name}</span>
-              </NavLink>
-            );
-          })}
-
+          <button onClick={() => setSidebarOpen(false)} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-[#96B6A1] text-[#26372F] text-sm font-semibold">
+            <LayoutDashboard size={19} strokeWidth={1.8} />
+            <span>Dashboard</span>
+          </button>
+          <button onClick={() => setSidebarOpen(false)} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-200 hover:bg-white/10 hover:text-white">
+            <Search size={19} strokeWidth={1.8} /><span>Find Auto</span>
+          </button>
+          <button onClick={() => setSidebarOpen(false)} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-200 hover:bg-white/10 hover:text-white">
+            <CalendarDays size={19} strokeWidth={1.8} /><span>Scheduled Booking</span>
+          </button>
+          <button onClick={() => setSidebarOpen(false)} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-200 hover:bg-white/10 hover:text-white">
+            <Zap size={19} strokeWidth={1.8} /><span>Instant Booking</span>
+          </button>
+          <button onClick={() => setSidebarOpen(false)} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-200 hover:bg-white/10 hover:text-white">
+            <ClipboardList size={19} strokeWidth={1.8} /><span>My Bookings</span>
+          </button>
+          <button onClick={() => setSidebarOpen(false)} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-200 hover:bg-white/10 hover:text-white">
+            <CreditCard size={19} strokeWidth={1.8} /><span>Digital Pass</span>
+          </button>
+          <button onClick={() => setSidebarOpen(false)} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-200 hover:bg-white/10 hover:text-white">
+            <Map size={19} strokeWidth={1.8} /><span>My Journey</span>
+          </button>
+          <button onClick={() => setSidebarOpen(false)} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-200 hover:bg-white/10 hover:text-white">
+            <Wallet size={19} strokeWidth={1.8} /><span>Wallet</span>
+          </button>
+          <button onClick={() => setSidebarOpen(false)} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-200 hover:bg-white/10 hover:text-white">
+            <Gift size={19} strokeWidth={1.8} /><span>Rewards</span>
+          </button>
+          <button onClick={() => setSidebarOpen(false)} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-200 hover:bg-white/10 hover:text-white">
+            <ShieldCheck size={19} strokeWidth={1.8} /><span>Safety Centre</span>
+          </button>
+          <button onClick={() => setSidebarOpen(false)} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-200 hover:bg-white/10 hover:text-white">
+            <User size={19} strokeWidth={1.8} /><span>Profile</span>
+          </button>
+          <button onClick={() => setSidebarOpen(false)} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-200 hover:bg-white/10 hover:text-white">
+            <Settings size={19} strokeWidth={1.8} /><span>Settings</span>
+          </button>
         </nav>
 
         {/* USER PROFILE */}

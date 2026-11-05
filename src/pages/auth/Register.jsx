@@ -1,5 +1,7 @@
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   ArrowLeft,
   ArrowRight,
@@ -19,6 +21,29 @@ import {
 
 const Register = () => {
   const [role, setRole] = useState("passenger");
+  const [userData, setUserData] = useState({
+    fullName: "",
+    mobileNumber: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setUserData({ ...userData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (role === "passenger") {
+      const registeredUsers = JSON.parse(localStorage.getItem("shareAuto-registeredUser")) || [];
+      registeredUsers.push(userData);
+      localStorage.setItem("shareAuto-registeredUser", JSON.stringify(registeredUsers));
+      alert('Registration successfull')
+    }
+    navigate("/login");
+  };
 
   return (
     <div className="min-h-screen bg-[#F6F5F0] p-3 sm:p-6 lg:p-8">
@@ -141,13 +166,13 @@ const Register = () => {
           {/* Top navigation */}
           <header className="flex items-center justify-between border-b border-[#E5E8E1] bg-[#F6F5F0] px-6 py-5 sm:px-10">
 
-            <a
-              href="/"
+            <Link
+              to="/"
               className="flex items-center gap-2 text-sm font-semibold text-[#28332D] transition hover:text-[#8FAF9A]"
             >
               <ArrowLeft size={17} />
               Back to Home
-            </a>
+            </Link>
 
             <div className="flex items-center gap-2 text-xs font-medium text-[#788078]">
               <ShieldCheck size={16} className="text-[#8FAF9A]" />
@@ -271,7 +296,7 @@ const Register = () => {
               </div>
 
               {/* Registration Form */}
-              <form className="space-y-5">
+              <form className="space-y-5" onSubmit={handleSubmit}>
 
                 {/* Common Details */}
                 <div className="grid gap-5 sm:grid-cols-2">
@@ -290,6 +315,9 @@ const Register = () => {
 
                       <input
                         type="text"
+                        name="fullName"
+                        value={userData.fullName}
+                        onChange={handleChange}
                         placeholder="Enter your full name"
                         className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pl-11 pr-4 text-sm outline-none transition placeholder:text-[#A4AAA4] focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15"
                       />
@@ -310,6 +338,9 @@ const Register = () => {
 
                       <input
                         type="tel"
+                        name="mobileNumber"
+                        value={userData.mobileNumber}
+                        onChange={handleChange}
                         placeholder="+91 00000 00000"
                         className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pl-11 pr-4 text-sm outline-none transition placeholder:text-[#A4AAA4] focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15"
                       />
@@ -332,6 +363,9 @@ const Register = () => {
 
                     <input
                       type="email"
+                      name="email"
+                      value={userData.email}
+                      onChange={handleChange}
                       placeholder="you@example.com"
                       className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pl-11 pr-4 text-sm outline-none transition placeholder:text-[#A4AAA4] focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15"
                     />
@@ -355,6 +389,9 @@ const Register = () => {
 
                       <input
                         type="password"
+                        name="password"
+                        value={userData.password}
+                        onChange={handleChange}
                         placeholder="Create password"
                         className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pl-11 pr-4 text-sm outline-none transition placeholder:text-[#A4AAA4] focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15"
                       />
@@ -375,6 +412,9 @@ const Register = () => {
 
                       <input
                         type="password"
+                        name="confirmPassword"
+                        value={userData.confirmPassword}
+                        onChange={handleChange}
                         placeholder="Re-enter password"
                         className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pl-11 pr-4 text-sm outline-none transition placeholder:text-[#A4AAA4] focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15"
                       />
@@ -411,6 +451,7 @@ const Register = () => {
 
                         <input
                           type="text"
+                          name="drivingLicenceNumber"
                           placeholder="Enter licence number"
                           className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pl-11 pr-4 text-sm outline-none transition placeholder:text-[#A4AAA4] focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15"
                         />
@@ -431,6 +472,7 @@ const Register = () => {
 
                         <input
                           type="text"
+                          name="vehicleRegistrationNumber"
                           placeholder="TN 00 AB 0000"
                           className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pl-11 pr-4 text-sm outline-none transition placeholder:text-[#A4AAA4] focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15"
                         />
@@ -454,6 +496,7 @@ const Register = () => {
 
                           <input
                             type="text"
+                            name="vehicleModel"
                             placeholder="e.g. Bajaj RE"
                             className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pl-11 pr-4 text-sm outline-none transition placeholder:text-[#A4AAA4] focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15"
                           />
@@ -466,7 +509,7 @@ const Register = () => {
                           Vehicle Type
                         </label>
 
-                        <select className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] px-4 py-3.5 text-sm text-[#788078] outline-none focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15">
+                        <select name="vehicleType" className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] px-4 py-3.5 text-sm text-[#788078] outline-none focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15">
                           <option value="">Select vehicle</option>
                           <option value="auto">Auto Rickshaw</option>
                           <option value="electric">Electric Auto</option>
@@ -487,7 +530,7 @@ const Register = () => {
                           className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8FAF9A]"
                         />
 
-                        <select className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pl-11 pr-4 text-sm text-[#788078] outline-none focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15">
+                        <select name="seatingCapacity" className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-3.5 pl-11 pr-4 text-sm text-[#788078] outline-none focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15">
                           <option value="">Select capacity</option>
                           <option value="3">3 Seats</option>
                           <option value="4">4 Seats</option>
@@ -562,7 +605,7 @@ const Register = () => {
 
                 {/* Submit Button */}
                 <button
-                  type="button"
+                  type="submit"
                   className="group flex w-full items-center justify-center gap-3 rounded-xl bg-[#28332D] py-4 text-sm font-bold tracking-wide text-white shadow-lg shadow-[#28332D]/15 transition duration-300 hover:-translate-y-0.5 hover:bg-[#3B5143] hover:shadow-xl"
                 >
                   Create Account
@@ -579,12 +622,12 @@ const Register = () => {
               <p className="mt-7 text-center text-sm text-[#788078]">
                 Already have an account?{" "}
 
-                <a
-                  href="/login"
+                <Link
+                  to="/login"
                   className="font-bold text-[#526C59] underline-offset-4 hover:underline"
                 >
                   Sign in
-                </a>
+                </Link>
               </p>
 
               {/* Footer */}

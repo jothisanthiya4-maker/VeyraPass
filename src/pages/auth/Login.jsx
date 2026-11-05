@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import {
   ArrowLeft,
   ArrowRight,
@@ -16,7 +17,7 @@ import {
   KeyRound,
 } from "lucide-react";
 
-const LoginPassword = () => {
+const LoginPassword = ({ value, onChange }) => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -33,6 +34,9 @@ const LoginPassword = () => {
 
         <input
           type={visible ? "text" : "password"}
+          name="password"
+          value={value}
+          onChange={onChange}
           placeholder="Enter your password"
           className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-4 pl-11 pr-12 text-sm outline-none transition placeholder:text-[#A4AAA4] focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15"
         />
@@ -51,6 +55,32 @@ const LoginPassword = () => {
 
 const Login = () => {
   const [remember, setRemember] = useState(false);
+  const [loginData, setLoginData] = useState({
+    emailOrMobile: "",
+    password: "",
+  });
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setLoginData({ ...loginData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const registeredUsers = JSON.parse(localStorage.getItem("shareAuto-registeredUser")) || [];
+    const currentUser = registeredUsers.find((user) =>
+      (user.email === loginData.emailOrMobile ||
+          user.mobileNumber === loginData.emailOrMobile) &&
+        user.password === loginData.password
+    );
+
+    if (currentUser) {
+      localStorage.setItem("shareAuto-actvieUser", JSON.stringify(currentUser));
+      navigate("/dashboard");
+    } else {
+      alert("Email/mobile number or password is incorrect.");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#F6F5F0] p-3 sm:p-6 lg:p-8">
@@ -187,13 +217,13 @@ const Login = () => {
           {/* Header */}
           <header className="flex items-center justify-between border-b border-[#E5E8E1] px-6 py-5 sm:px-10">
 
-            <a
-              href="/"
+            <Link
+              to="/"
               className="flex items-center gap-2 text-sm font-semibold text-[#28332D] transition hover:text-[#8FAF9A]"
             >
               <ArrowLeft size={17} />
               Back to Home
-            </a>
+            </Link>
 
             <div className="flex items-center gap-2 text-xs font-medium text-[#788078]">
               <ShieldCheck size={16} className="text-[#8FAF9A]" />
@@ -231,7 +261,7 @@ const Login = () => {
               </div>
 
               {/* Login Form */}
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
 
                 {/* Email / Mobile */}
                 <div className="space-y-2">
@@ -247,6 +277,9 @@ const Login = () => {
 
                     <input
                       type="text"
+                      name="emailOrMobile"
+                      value={loginData.emailOrMobile}
+                      onChange={handleChange}
                       placeholder="Enter email or mobile number"
                       className="w-full rounded-xl border border-[#DCE3DC] bg-[#FAFBF9] py-4 pl-11 pr-4 text-sm outline-none transition placeholder:text-[#A4AAA4] focus:border-[#8FAF9A] focus:ring-4 focus:ring-[#8FAF9A]/15"
                     />
@@ -254,7 +287,10 @@ const Login = () => {
                 </div>
 
                 {/* Password */}
-                <LoginPassword />
+                <LoginPassword
+                  value={loginData.password}
+                  onChange={handleChange}
+                />
 
                 {/* Remember Me / Forgot Password */}
                 <div className="flex flex-wrap items-center justify-between gap-3">
@@ -283,7 +319,7 @@ const Login = () => {
 
                 {/* Login Button */}
                 <button
-                  type="button"
+                  type="submit"
                   className="group flex w-full items-center justify-center gap-3 rounded-xl bg-[#28332D] py-4 text-sm font-bold tracking-wide text-white shadow-lg shadow-[#28332D]/15 transition duration-300 hover:-translate-y-0.5 hover:bg-[#3B5143] hover:shadow-xl"
                 >
                   Sign In to Your Account
@@ -312,13 +348,13 @@ const Login = () => {
                   Don't have an account yet?
                 </p>
 
-                <a
-                  href="/register"
+                <Link
+                  to="/register"
                   className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-[#526C59] transition hover:text-[#28332D]"
                 >
                   Create an Account
                   <ArrowRight size={16} />
-                </a>
+                </Link>
 
               </div>
 
