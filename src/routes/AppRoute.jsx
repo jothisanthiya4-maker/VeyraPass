@@ -6,6 +6,9 @@ import PassPage from "../pages/userPages/PassPage";
 import RideDetails from "../pages/userPages/RideDetails";
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
+import AvailableAutos from "../pages/userPages/AvailableAutos";
+import MyBookings from "../pages/userPages/MyBookings";
+import MyPass from "../pages/userPages/MyPass";
 
 const AppRoute = () => {
   return (
@@ -15,9 +18,14 @@ const AppRoute = () => {
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/pass" element={<PassPage />} />
-      <Route path="/ride-details" element={<RideDetails />} />
+      <Route element={<Dashboard />}>
+        <Route path="/dashboard" element={<LandingPage />} />
+        <Route path="/user/available-autos" element={<AvailableAutos />} />
+        <Route path="/user/auto-details/:autoId" element={<RideDetails />} />
+        <Route path="/pass" element={<PassPage />} />
+        <Route path="/my-pass" element={<MyPass />} />
+        <Route path="/my-bookings" element={<MyBookings />} />
+      </Route>
     </Routes>
   )
 }

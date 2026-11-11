@@ -1,5 +1,6 @@
 
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -74,21 +75,21 @@ const LandingPage = () => {
             {/* Hero Buttons */}
 
             <div className="flex flex-wrap gap-4">
-              <a
-                href="/register"
+              <Link
+                to="/register"
                 className="px-7 py-4 rounded-2xl bg-[#28332D] text-white font-bold flex items-center gap-3 hover:bg-[#1E2923] transition shadow-lg"
               >
                 Find an Auto
                 <ArrowRight size={19} />
-              </a>
+              </Link>
 
-              <a
-                href="#how-it-works"
+              <Link
+                to="#how-it-works"
                 className="px-7 py-4 rounded-2xl border border-[#C5D6C9] bg-white text-[#28332D] font-bold hover:bg-[#E5EDE6] transition flex items-center gap-2"
               >
                 Explore How It Works
                 <MoveRight size={18} />
-              </a>
+              </Link>
             </div>
 
             {/* Trust Points */}
@@ -279,13 +280,13 @@ const LandingPage = () => {
                   </span>
                 </div>
 
-                <a
-                  href="/register"
+                <Link
+                  to="/register"
                   className="inline-flex items-center gap-3 mt-9 px-6 py-3.5 rounded-xl bg-[#28332D] text-white font-bold hover:bg-[#1E2923] transition"
                 >
                   Schedule a Ride
                   <ArrowRight size={18} />
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -326,13 +327,13 @@ const LandingPage = () => {
                   </span>
                 </div>
 
-                <a
-                  href="/register"
+                <Link
+                  to="/register"
                   className="inline-flex items-center gap-3 mt-9 px-6 py-3.5 rounded-xl bg-[#C5D6C9] text-[#28332D] font-bold hover:bg-white transition"
                 >
                   Find an Available Auto
                   <ArrowRight size={18} />
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -469,13 +470,13 @@ const LandingPage = () => {
               </p>
             </div>
 
-            <a
-              href="/register"
+            <Link
+              to="/register"
               className="inline-flex items-center gap-2 text-sm font-bold text-[#28332D] hover:text-[#8FAF9A] transition"
             >
               Start your journey
               <ArrowUpRight size={18} />
-            </a>
+            </Link>
           </div>
 
 
@@ -786,13 +787,13 @@ const LandingPage = () => {
                 </p>
               </div>
 
-              <a
-                href="/register"
+              <Link
+                to="/register"
                 className="mt-7 flex items-center justify-between bg-[#C5D6C9] text-[#28332D] rounded-xl px-5 py-4 font-bold hover:bg-white transition"
               >
                 Explore Autos
                 <ArrowUpRight size={19} />
-              </a>
+              </Link>
             </div>
 
           </div>
@@ -1011,20 +1012,20 @@ const LandingPage = () => {
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 mt-9">
-                <a
-                  href="/register"
+                <Link
+                  to="/register"
                   className="px-8 py-4 bg-[#C5D6C9] text-[#28332D] rounded-xl font-extrabold flex items-center gap-3 hover:bg-white transition"
                 >
                   Create Your Account
                   <ArrowRight size={19} />
-                </a>
+                </Link>
 
-                <a
-                  href="/login"
+                <Link
+                  to="/login"
                   className="px-8 py-4 border border-white/30 text-white rounded-xl font-bold hover:bg-white/10 transition"
                 >
                   Login
-                </a>
+                </Link>
               </div>
 
             </div>
@@ -1044,7 +1045,7 @@ const LandingPage = () => {
             {/* Brand */}
 
             <div className="lg:col-span-1">
-              <a href="#" className="flex items-center gap-3">
+              <Link to="#" className="flex items-center gap-3">
                 <div className="w-11 h-11 rounded-2xl bg-[#8FAF9A] flex items-center justify-center">
                   <CarFront size={25} className="text-[#28332D]" />
                 </div>
@@ -1057,7 +1058,7 @@ const LandingPage = () => {
                     Chennai
                   </p>
                 </div>
-              </a>
+              </Link>
 
               <p className="text-sm text-[#C5D6C9] leading-7 mt-6 max-w-xs">
                 Share your route, share the cost. Making everyday
@@ -1065,15 +1066,15 @@ const LandingPage = () => {
               </p>
 
               {/* <div className="flex items-center gap-3 mt-6">
-                <a href="#" className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center hover:bg-[#8FAF9A] hover:text-[#28332D] transition">
+                <Link to="#" className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center hover:bg-[#8FAF9A] hover:text-[#28332D] transition">
                   <Facebook size={18} />
-                </a>
-                <a href="#" className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center hover:bg-[#8FAF9A] hover:text-[#28332D] transition">
+                </Link>
+                <Link to="#" className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center hover:bg-[#8FAF9A] hover:text-[#28332D] transition">
                   <Instagram size={18} />
-                </a>
-                <a href="#" className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center hover:bg-[#8FAF9A] hover:text-[#28332D] transition">
+                </Link>
+                <Link to="#" className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center hover:bg-[#8FAF9A] hover:text-[#28332D] transition">
                   <Linkedin size={18} />
-                </a>
+                </Link>
               </div> */}
             </div>
 
@@ -1084,11 +1085,11 @@ const LandingPage = () => {
               <h3 className="font-extrabold text-lg mb-6">Quick Links</h3>
 
               <div className="space-y-4 text-sm text-[#C5D6C9]">
-                <a href="#" className="block hover:text-white transition">Home</a>
-                <a href="#about" className="block hover:text-white transition">About Us</a>
-                <a href="#how-it-works" className="block hover:text-white transition">How It Works</a>
-                <a href="#features" className="block hover:text-white transition">Features</a>
-                <a href="/register" className="block hover:text-white transition">Register</a>
+                <Link to="#" className="block hover:text-white transition">Home</Link>
+                <Link to="#about" className="block hover:text-white transition">About Us</Link>
+                <Link to="#how-it-works" className="block hover:text-white transition">How It Works</Link>
+                <Link to="#features" className="block hover:text-white transition">Features</Link>
+                <Link to="/register" className="block hover:text-white transition">Register</Link>
               </div>
             </div>
 
@@ -1099,10 +1100,10 @@ const LandingPage = () => {
               <h3 className="font-extrabold text-lg mb-6">Passenger Support</h3>
 
               <div className="space-y-4 text-sm text-[#C5D6C9]">
-                <a href="/login" className="block hover:text-white transition">Passenger Login</a>
-                <a href="#contact" className="block hover:text-white transition">Help & Support</a>
-                <a href="#contact" className="block hover:text-white transition">Contact Us</a>
-                <a href="#contact" className="block hover:text-white transition">FAQs</a>
+                <Link to="/login" className="block hover:text-white transition">Passenger Login</Link>
+                <Link to="#contact" className="block hover:text-white transition">Help & Support</Link>
+                <Link to="#contact" className="block hover:text-white transition">Contact Us</Link>
+                <Link to="#contact" className="block hover:text-white transition">FAQs</Link>
               </div>
             </div>
 
@@ -1144,9 +1145,9 @@ const LandingPage = () => {
             </p>
 
             <div className="flex flex-wrap justify-center gap-6">
-              <a href="#" className="hover:text-white transition">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition">Terms & Conditions</a>
-              <a href="#" className="hover:text-white transition">Cookie Policy</a>
+              <Link to="#" className="hover:text-white transition">Privacy Policy</Link>
+              <Link to="#" className="hover:text-white transition">Terms & Conditions</Link>
+              <Link to="#" className="hover:text-white transition">Cookie Policy</Link>
             </div>
 
             <p className="font-semibold">
