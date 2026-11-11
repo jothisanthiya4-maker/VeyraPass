@@ -111,7 +111,7 @@ const Login = () => {
 
           {/* Logo */}
           <div className="relative z-10">
-            <a href="/" className="inline-flex items-center gap-3">
+            <Link to="/" className="inline-flex items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#8FAF9A] text-[#28332D]">
                 <CarFront size={27} />
               </div>
@@ -124,7 +124,7 @@ const Login = () => {
                   SHARE · RIDE · GO
                 </p>
               </div>
-            </a>
+            </Link>
           </div>
 
           {/* Branding Content */}
@@ -308,12 +308,12 @@ const Login = () => {
                     </span>
                   </label>
 
-                  <a
-                    href="/forgot-password"
+                  <Link
+                    to="/forgot-password"
                     className="text-sm font-semibold text-[#526C59] transition hover:text-[#28332D] hover:underline"
                   >
                     Forgot Password?
-                  </a>
+                  </Link>
 
                 </div>
 

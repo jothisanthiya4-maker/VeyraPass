@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 import {
   LayoutDashboard,
@@ -8,6 +9,7 @@ import {
   Zap,
   ClipboardList,
   CreditCard,
+  Ticket,
   Map,
   Wallet,
   Gift,
@@ -21,6 +23,7 @@ import {
 
 export default function UserDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const navigate = useNavigate();
   const activeUser = localStorage.getItem("shareAuto-actvieUser");
   
   if (!activeUser) {
@@ -48,8 +51,8 @@ export default function UserDashboard() {
           flex flex-col
           transition-transform duration-300
           ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
-          lg:sticky lg:top-0 lg:translate-x-0
-          lg:shrink-0 lg:self-start
+          lg:sticky lg:top-0 lg:shrink-0 lg:translate-x-0 lg:transition-[width]
+          ${sidebarOpen ? "lg:w-60" : "lg:w-0 lg:overflow-hidden"}
         `}
       >
 
@@ -73,7 +76,7 @@ export default function UserDashboard() {
 
           <button
             onClick={() => setSidebarOpen(false)}
-            className="ml-auto lg:hidden"
+            className="ml-auto"
           >
             <X size={21} />
           </button>
@@ -82,9 +85,9 @@ export default function UserDashboard() {
 
         {/* NAVIGATION */}
         <nav className="flex-1 px-3 py-6 space-y-1.5 overflow-y-auto">
-          <button onClick={() => setSidebarOpen(false)} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-[#96B6A1] text-[#26372F] text-sm font-semibold">
+          <button onClick={() => navigate("/user/available-autos")} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-[#96B6A1] text-[#26372F] text-sm font-semibold">
             <LayoutDashboard size={19} strokeWidth={1.8} />
-            <span>Dashboard</span>
+            <span>Available Autos</span>
           </button>
           <button onClick={() => setSidebarOpen(false)} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-200 hover:bg-white/10 hover:text-white">
             <Search size={19} strokeWidth={1.8} /><span>Find Auto</span>
@@ -95,11 +98,14 @@ export default function UserDashboard() {
           <button onClick={() => setSidebarOpen(false)} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-200 hover:bg-white/10 hover:text-white">
             <Zap size={19} strokeWidth={1.8} /><span>Instant Booking</span>
           </button>
-          <button onClick={() => setSidebarOpen(false)} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-200 hover:bg-white/10 hover:text-white">
+          <button onClick={() => navigate("/my-bookings")} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-200 hover:bg-white/10 hover:text-white">
             <ClipboardList size={19} strokeWidth={1.8} /><span>My Bookings</span>
           </button>
-          <button onClick={() => setSidebarOpen(false)} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-200 hover:bg-white/10 hover:text-white">
+          <button onClick={() => navigate("/pass")} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-200 hover:bg-white/10 hover:text-white">
             <CreditCard size={19} strokeWidth={1.8} /><span>Digital Pass</span>
+          </button>
+          <button onClick={() => navigate("/my-pass")} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-200 hover:bg-white/10 hover:text-white">
+            <Ticket size={19} strokeWidth={1.8} /><span>My Pass</span>
           </button>
           <button onClick={() => setSidebarOpen(false)} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-200 hover:bg-white/10 hover:text-white">
             <Map size={19} strokeWidth={1.8} /><span>My Journey</span>
@@ -146,19 +152,20 @@ export default function UserDashboard() {
 
       </aside>
 
-      {/* RIGHT SIDE - EMPTY DASHBOARD */}
-      <main className="flex-1 min-w-0 min-h-screen">
-
-        {/* MOBILE MENU BUTTON */}
-        <div className="lg:hidden p-4">
-          <button
-            onClick={() => setSidebarOpen(true)}
-            className="bg-[#26372F] text-white p-2.5 rounded-lg"
-          >
-            <Menu size={22} />
-          </button>
-        </div>
-
+      {/* DASHBOARD HOME */}
+      <main className="min-h-screen min-w-0 flex-1">
+        {!sidebarOpen && (
+          <div className="flex h-14 items-center px-4">
+            <button
+              onClick={() => setSidebarOpen(true)}
+              aria-label="Open dashboard menu"
+              className="rounded-lg bg-[#26372F] p-2.5 text-white shadow-lg"
+            >
+              <Menu size={22} />
+            </button>
+          </div>
+        )}
+        <Outlet />
       </main>
 
     </div>

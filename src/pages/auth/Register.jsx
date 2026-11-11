@@ -1,7 +1,6 @@
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   ArrowLeft,
   ArrowRight,
@@ -61,7 +60,7 @@ const Register = () => {
 
           {/* Logo */}
           <div className="relative z-10">
-            <a href="/" className="inline-flex items-center gap-3">
+            <Link to="/" className="inline-flex items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#8FAF9A] text-[#28332D]">
                 <CarFront size={27} />
               </div>
@@ -74,7 +73,7 @@ const Register = () => {
                   SHARE · RIDE · GO
                 </p>
               </div>
-            </a>
+            </Link>
           </div>
 
           {/* Branding content */}
@@ -586,19 +585,19 @@ const Register = () => {
 
                   <span className="text-xs leading-6 text-[#788078]">
                     I agree to the{" "}
-                    <a
-                      href="#"
+                    <Link
+                      to="#"
                       className="font-semibold text-[#526C59] underline"
                     >
                       Terms & Conditions
-                    </a>{" "}
+                    </Link>{" "}
                     and{" "}
-                    <a
-                      href="#"
+                    <Link
+                      to="#"
                       className="font-semibold text-[#526C59] underline"
                     >
                       Privacy Policy
-                    </a>.
+                    </Link>.
                   </span>
 
                 </label>
